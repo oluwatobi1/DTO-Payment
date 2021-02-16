@@ -14,23 +14,41 @@
 </header>
 
 <!-- Payment form -->
-  <div class="uk-margin-auto uk-margin-auto-vertical uk-width-1-2@s uk-card uk-card-default uk-card-body">
+<div
+  class="uk-margin-auto uk-margin-auto-vertical uk-width-1-2@s uk-card uk-card-default uk-card-body"
+>
+  <form class="uk-grid-small" uk-grid>
+    <div class="uk-width-1-2@s">
+      <div class="uk-inline">
+        <span class="uk-form-icon" uk-icon="icon: credit-card"></span>
+        <input class="uk-input" type="text" placeholder="Credit Card Number" />
+      </div>
+    </div>
+    <div class="uk-width-1-2@s">
+      <div class="uk-inline">
+        <span class="uk-form-icon" uk-icon="icon: user"></span>
+      <input class="uk-input" type="text" placeholder="Card Holder" />
+      </div>
+    </div>
+    <div class="uk-width-1-4@s">
+      <div class="uk-inline">
+        <span class="uk-form-icon" uk-icon="icon: trash"></span>
+      <input class="uk-input" type="text" placeholder="Expiration Date" />
+      </div>
+    </div>
+    <div class="uk-width-1-4@s">
+      <div class="uk-inline">
+        <span class="uk-form-icon" uk-icon="icon: lock"></span>
+      <input class="uk-input" type="text" placeholder="CCV" />
+      </div>
+    </div>
+    <div class="uk-width-1-2@s">
+      <div class="uk-inline">
+        <span class="uk-form-icon" uk-icon="icon: copy"></span>
+      <input class="uk-input" type="text" placeholder="Amount" />
+      </div>
+    </div>
+    <input class="uk-button uk-button-primary" type="submit" value="Submit">
 
-    <form class="uk-grid-small" uk-grid>
-      <div class="uk-width-1-2@s">
-        <input class="uk-input" type="text" placeholder="50" />
-      </div>
-      <div class="uk-width-1-4@s">
-        <input class="uk-input" type="text" placeholder="25" />
-      </div>
-      <div class="uk-width-1-4@s">
-        <input class="uk-input" type="text" placeholder="25" />
-      </div>
-      <div class="uk-width-1-2@s">
-        <input class="uk-input" type="text" placeholder="50" />
-      </div>
-      <div class="uk-width-1-2@s">
-        <input class="uk-input" type="text" placeholder="50" />
-      </div>
-    </form>
-  </div>
+  </form>
+</div>
