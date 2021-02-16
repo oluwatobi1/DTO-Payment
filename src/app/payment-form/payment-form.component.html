@@ -17,38 +17,48 @@
 <div
   class="uk-margin-auto uk-margin-auto-vertical uk-width-1-2@s uk-card uk-card-default uk-card-body"
 >
-  <form class="uk-grid-small" uk-grid>
+  <form class="uk-grid-small" [formGroup]="paymentForm" (ngSubmit)="onSubmit()" uk-grid >
+
     <div class="uk-width-1-2@s">
       <div class="uk-inline">
         <span class="uk-form-icon" uk-icon="icon: credit-card"></span>
-        <input class="uk-input" type="number" placeholder="Credit Card Number" />
+        <input
+          class="uk-input"
+          type="number"
+          placeholder="Credit Card Number"
+          formControlName="cardNumber"
+        />
       </div>
     </div>
+
     <div class="uk-width-1-2@s">
       <div class="uk-inline">
         <span class="uk-form-icon" uk-icon="icon: user"></span>
-      <input class="uk-input" type="text" placeholder="Card Holder" />
+        <input class="uk-input" type="text" placeholder="Card Holder" formControlName="cardHolder"/>
       </div>
     </div>
+
     <div class="uk-width-1-1@s">
       <div class="uk-inline">
         <span class="uk-form-icon" uk-icon="icon: calendar"></span>
-      <input class="uk-input" type="date" placeholder="Expiration Date" />
+        <input class="uk-input" type="date" placeholder="Expiration Date" formControlName="expirationDate"/>
       </div>
     </div>
+
     <div class="uk-width-1-2@s">
       <div class="uk-inline">
         <span class="uk-form-icon" uk-icon="icon: lock"></span>
-      <input class="uk-input" type="password" placeholder="CCV" />
+        <input class="uk-input" type="password" placeholder="CCV" formControlName="CCV"/>
       </div>
     </div>
+
     <div class="uk-width-1-2@s">
       <div class="uk-inline">
         <span class="uk-form-icon" uk-icon="icon: copy"></span>
-      <input class="uk-input" type="number" placeholder="Amount" />
+        <input class="uk-input" type="number" placeholder="Amount" formControlName="amount"/>
       </div>
     </div>
-    <input class="uk-button uk-button-primary" type="submit" value="Submit">
 
+    <input class="uk-button uk-button-primary" type="submit" value="Submit" />
   </form>
 </div>
