@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-payment-form',
@@ -8,23 +8,25 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class PaymentFormComponent implements OnInit {
 
-// CCPayment Reactive Forms
+  // CCPayment Reactive Forms
 
-  paymentForm = new FormGroup({
+  paymentForm: FormGroup;
+  currentdate = new Date()
 
-    cardNumber: new FormControl(''),
-    cardHolder: new FormControl(''),
-    expirationDate: new FormControl(''),
-    CCV: new FormControl(''),
-    amount: new FormControl('')
-
-  })
   constructor() { }
 
   ngOnInit(): void {
+    this.paymentForm = new FormGroup({
+      cardNumber: new FormControl('ad', [Validators.minLength(16), Validators.maxLength(16)]),
+      cardHolder: new FormControl('', [Validators.maxLength(45)]),
+      expirationDate: new FormControl('', []),
+      CCV: new FormControl(''),
+      amount: new FormControl('')
+
+    })
   }
 
-  onSubmit(){
+  onSubmit() {
     console.log(this.paymentForm.value);
 
   }

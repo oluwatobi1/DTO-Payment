@@ -26,22 +26,21 @@
           class="uk-input"
           type="number"
           placeholder="Credit Card Number"
-          formControlName="cardNumber"
-        />
+          formControlName="cardNumber" required>
       </div>
     </div>
 
     <div class="uk-width-1-2@s">
       <div class="uk-inline">
         <span class="uk-form-icon" uk-icon="icon: user"></span>
-        <input class="uk-input" type="text" placeholder="Card Holder" formControlName="cardHolder"/>
+        <input class="uk-input" type="text" placeholder="Card Holder" formControlName="cardHolder" required >
       </div>
     </div>
 
     <div class="uk-width-1-1@s">
       <div class="uk-inline">
         <span class="uk-form-icon" uk-icon="icon: calendar"></span>
-        <input class="uk-input" type="date" placeholder="Expiration Date" formControlName="expirationDate"/>
+        <input class="uk-input" type="date" placeholder="Expiration Date" formControlName="expirationDate" required >
       </div>
     </div>
 
@@ -55,10 +54,11 @@
     <div class="uk-width-1-2@s">
       <div class="uk-inline">
         <span class="uk-form-icon" uk-icon="icon: copy"></span>
-        <input class="uk-input" type="number" placeholder="Amount" formControlName="amount"/>
+        <input class="uk-input" type="number" placeholder="Amount" formControlName="amount" required>
       </div>
     </div>
 
-    <input class="uk-button uk-button-primary" type="submit" value="Submit" />
+    <input [disabled]="paymentForm.invalid" class="uk-button uk-button-primary" type="submit"
+    value="Submit" />
   </form>
 </div>
