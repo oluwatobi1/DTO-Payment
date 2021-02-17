@@ -13,13 +13,16 @@ export class LoadPayments implements Action{
   readonly type = PaymentActionTypes.LOAD_PAYMENT
 }
 
-export class LoadPaymentSuccess implements Action{
+export class LoadPaymentsSuccess implements Action{
   readonly type = PaymentActionTypes.LOAD_PAYMENT_SUCCESS
-  constructor(private payload:Payment[]){}
+  constructor(public payload:Payment[]){}
 }
 
 
-export class LoadPaymentFail implements Action{
+export class LoadPaymentsFail implements Action{
   readonly type = PaymentActionTypes.LOAD_PAYMENT_FAIL
-  constructor(private payload:string){}
+  constructor(public payload:string){}
 }
+
+
+export type Actions = LoadPayments | LoadPaymentsSuccess | LoadPaymentsFail;
