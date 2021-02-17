@@ -26,3 +26,7 @@
   <button class="uk-button uk-button-secondary uk-button-large uk-align-center" routerLink="paymentForm">
     PAYMENT FORM
   </button>
+
+  <ul *ngFor="let item of payments">
+    <li>{{ item.cardHolder }}</li>
+  </ul>

@@ -7,6 +7,9 @@ import { PaymentFormComponent } from './payment-form/payment-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 
+import { paymentReducer } from './payment-form/state/payment.reducer'
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +19,9 @@ import { StoreModule } from '@ngrx/store';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    // StoreModule.forRoot({})
+    StoreModule.forRoot({
+      payment:paymentReducer
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
