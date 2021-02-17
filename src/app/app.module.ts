@@ -10,7 +10,7 @@ import { StoreModule } from '@ngrx/store';
 @NgModule({
   declarations: [
     AppComponent,
-    PaymentFormComponent
+    PaymentFormComponent,
   ],
   imports: [
     BrowserModule,
