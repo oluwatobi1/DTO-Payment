@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 
 import { paymentReducer } from './payment-form/state/payment.reducer'
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { paymentReducer } from './payment-form/state/payment.reducer'
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    StoreDevtoolsModule.instrument(),
     StoreModule.forRoot({
       payment:paymentReducer
     }),
