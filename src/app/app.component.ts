@@ -32,7 +32,6 @@ export class AppComponent implements OnInit{
   ngOnInit(){
     this.store.dispatch(new paymentAction.LoadPayments())
     this.paymentsList$ = this.store.pipe(select(fromPayment.getPayments))
-    console.log("Paymentlits" , this.paymentsList$);
 
 
   }
