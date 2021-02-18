@@ -13,40 +13,41 @@ export enum PaymentActionTypes {
 }
 
 // Loading all payment actions
-export class LoadPayments implements Action{
+export class LoadPayments implements Action {
   readonly type = PaymentActionTypes.LOAD_PAYMENT
 }
 
-export class LoadPaymentsSuccess implements Action{
+export class LoadPaymentsSuccess implements Action {
   readonly type = PaymentActionTypes.LOAD_PAYMENT_SUCCESS
-  constructor(public payload:Payment[]){}
+  constructor(public payload: Payment[]) { }
 }
 
-export class LoadPaymentsFail implements Action{
+export class LoadPaymentsFail implements Action {
   readonly type = PaymentActionTypes.LOAD_PAYMENT_FAIL
-  constructor(public payload:string){}
+  constructor(public payload: string) { }
 }
 
 // create payment
-export class CreatePayment implements Action{
+export class CreatePayment implements Action {
   readonly type = PaymentActionTypes.CREATE_PAYMENT
-  constructor(public payload:Payment){
+  constructor(public payload: Payment) {
 
   }
 }
 
-export class CreatePaymentSuccess implements Action{
+export class CreatePaymentSuccess implements Action {
   readonly type = PaymentActionTypes.CREATE_PAYMENT_SUCCESS;
-  constructor(public payload:Payment){}
+  constructor(public payload: Payment) { }
+}
+
+
+export class CreatePaymentFail implements Action {
+  readonly type = PaymentActionTypes.CREATE_PAYMENT_FAIL;
+  constructor(public payload: string) { }
 }
 
 
 
-export class CreatePaymentFail implements Action{
-  readonly type = PaymentActionTypes.CREATE_PAYMENT_FAIL
-  constructor(public payload: string){}
-}
-
-
-
-export type Actions = LoadPayments | LoadPaymentsSuccess | LoadPaymentsFail;
+export type Actions =
+  LoadPayments | LoadPaymentsSuccess | LoadPaymentsFail |
+  CreatePayment | CreatePaymentFail | CreatePaymentSuccess

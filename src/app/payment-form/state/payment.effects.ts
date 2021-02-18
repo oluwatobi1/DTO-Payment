@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Action } from "@ngrx/store";
-import {  Actions, createEffect, Effect, ofType } from "@ngrx/effects";
+import { Actions, createEffect, Effect, ofType } from "@ngrx/effects";
 
 
 
@@ -17,23 +17,35 @@ import { PaymentService } from "../../payment-form/payment-form.service";
 @Injectable()
 export class PaymentEffect {
   constructor(
-    private actions$:Actions,
-    private paymentService:PaymentService
-    ) { }
+    private actions$: Actions,
+    private paymentService: PaymentService
+  ) { }
 
 
-  loadPayments$=createEffect(() => this.actions$.pipe(
-      ofType<paymentAction.LoadPayments>(
-        paymentAction.PaymentActionTypes.LOAD_PAYMENT
-      ),
-      mergeMap((actions:paymentAction.LoadPayments)=>
-        this.paymentService.getPayments().pipe(
-          map(
-            (paymentDetails: Payment[])=>
-         new paymentAction.LoadPaymentsSuccess(paymentDetails),
-          ),
-          catchError(err =>of(new paymentAction.LoadPaymentsFail(err)))
-        ))
-        ))
+  loadPayments$ = createEffect(() => this.actions$.pipe(
+    ofType<paymentAction.LoadPayments>(
+      paymentAction.PaymentActionTypes.LOAD_PAYMENT
+    ),
+    mergeMap((actions: paymentAction.LoadPayments) =>
+      this.paymentService.getPayments().pipe(
+        map(
+          (paymentDetails: Payment[]) =>
+            new paymentAction.LoadPaymentsSuccess(paymentDetails),
+        ),
+        catchError(err => of(new paymentAction.LoadPaymentsFail(err)))
+      ))
+  ));
+
+  createPayments$ = createEffect(() => this.actions$.pipe(
+    ofType<paymentAction.CreatePayment>(
+      paymentAction.PaymentActionTypes.CREATE_PAYMENT
+    ),
+    map((action:paymentAction.CreatePayment)=>action.payload),
+    mergeMap((payment: Payment) =>
+      this.paymentService.createPayment(payment).pipe(
+        map((newPayment:Payment)=>new paymentAction.CreatePaymentSuccess(newPayment)),
+        catchError(err => of(new paymentAction.CreatePaymentFail(err)))
+      ))
+  ))
 
 }
