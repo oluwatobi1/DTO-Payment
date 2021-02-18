@@ -17,7 +17,7 @@
 <div
   class="uk-margin-auto uk-margin-auto-vertical uk-width-1-2@s uk-card uk-card-default uk-card-body"
 >
-  <form class="uk-grid-small" [formGroup]="paymentForm" (ngSubmit)="onSubmit()" uk-grid >
+  <form class="uk-grid-small" [formGroup]="paymentForm" (ngSubmit)="createPayment()" uk-grid >
 
     <div class="uk-width-1-2@s">
       <div class="uk-inline">
@@ -29,7 +29,6 @@
           formControlName="cardNumber" required>
       </div>
     </div>
-
     <div class="uk-width-1-2@s">
       <div class="uk-inline">
         <span class="uk-form-icon" uk-icon="icon: user"></span>
