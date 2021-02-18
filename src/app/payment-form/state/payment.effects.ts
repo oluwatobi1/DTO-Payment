@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Action } from "@ngrx/store";
-import {  Actions, Effect, ofType } from "@ngrx/effects";
+import {  Actions, createEffect, Effect, ofType } from "@ngrx/effects";
 
 
 
@@ -21,19 +21,19 @@ export class PaymentEffect {
     private paymentService:PaymentService
     ) { }
 
-  @Effect()
-  loadPayments$:Observable<Action> = this.actions$.pipe(
+
+  loadPayments$=createEffect(() => this.actions$.pipe(
       ofType<paymentAction.LoadPayments>(
-        paymentAction.PaymentActionTypes.LOAD_PAYMENT_SUCCESS
+        paymentAction.PaymentActionTypes.LOAD_PAYMENT
       ),
       mergeMap((actions:paymentAction.LoadPayments)=>
         this.paymentService.getPayments().pipe(
           map(
-            (payments: Payment[])=>
-         new paymentAction.LoadPaymentsSuccess(payments),
+            (paymentDetails: Payment[])=>
+         new paymentAction.LoadPaymentsSuccess(paymentDetails),
           ),
           catchError(err =>of(new paymentAction.LoadPaymentsFail(err)))
-        )
+        ))
         ))
 
 }

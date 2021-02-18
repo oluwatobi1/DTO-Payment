@@ -22,13 +22,13 @@
 
 <router-outlet></router-outlet>
 
-
   <button class="uk-button uk-button-secondary uk-button-large uk-align-center" routerLink="paymentForm">
     PAYMENT FORM
   </button>
 
-  {{payments}}
+  <!-- {{test |json }} this json -->
 
-  <ul *ngFor="let item of payments">
-    <li>{{ item.cardHolder }}</li>
-  </ul>
+
+  <div *ngFor="let payment of pay">
+    {{ payment.cardHolder }}
+  </div>

@@ -11,7 +11,7 @@ export interface PaymentState {
 }
 
 export interface AppState extends fromRoot.AppState{
-  payment:PaymentState
+  payments:PaymentState
 }
 
 export const initialState = {
