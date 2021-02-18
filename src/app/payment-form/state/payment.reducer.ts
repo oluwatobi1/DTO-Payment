@@ -12,7 +12,7 @@ export interface PaymentState {
 }
 
 export interface AppState extends fromRoot.AppState{
-  payments:PaymentState
+  payment:PaymentState
 }
 
 export const initialState = {
@@ -35,7 +35,7 @@ export function paymentReducer(state=initialState, action:paymentAction.Actions)
         ...state,
         loading:false,
         loaded:true,
-        payments: action.payload
+        payment: action.payload
       }
     }
     case paymentAction.PaymentActionTypes.LOAD_PAYMENT_FAIL:{

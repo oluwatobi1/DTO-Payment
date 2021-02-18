@@ -40,7 +40,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let payment of paymentsList">
+        <tr *ngFor="let payment of (paymentsList$ | async)">
             <td>{{payment.cardHolder}}</td>
             <td>{{payment.cardNumber}}</td>
             <td>{{payment.amount}}</td>
