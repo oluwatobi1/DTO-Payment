@@ -32,7 +32,13 @@ export const initialState = PaymentAdapter.getInitialState(defaultPayment)
 
 export function paymentReducer(state = initialState, action: paymentAction.Actions) {
   switch (action.type) {
-
+    case paymentAction.PaymentActionTypes.LOAD_PAYMENT:{
+      return {
+        ...state,
+        loading:true,
+        loaded:false
+      }
+    }
     case paymentAction.PaymentActionTypes.LOAD_PAYMENT_SUCCESS: {
       return PaymentAdapter.addMany(action.payload, {
         ...state,
@@ -50,7 +56,9 @@ export function paymentReducer(state = initialState, action: paymentAction.Actio
       }
     }
     // For create payment cases
-
+    case paymentAction.PaymentActionTypes.CREATE_PAYMENT: {
+      return PaymentAdapter.addOne(action.payload, state)
+    }
     case paymentAction.PaymentActionTypes.CREATE_PAYMENT_SUCCESS: {
       return PaymentAdapter.addOne(action.payload, state)
     }

@@ -1,16 +1,19 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-
 import { Observable } from "rxjs";
 
 
 import { Payment } from "../Models/payment.model";
+import { environment } from "src/environments/environment";
 
 
 @Injectable({providedIn: 'root'})
 export class PaymentService {
-  private paymentUrl = "http://localhost:3000/paymentDetails";
+  baseUrl = environment.apiUrl
+  // post url goes here
+  private paymentUrl = `${this.baseUrl}paymentDetails`
   constructor(private http:HttpClient) { }
+
 
   getPayments(): Observable<Payment[]>{
     return this.http.get<Payment[]>(this.paymentUrl)
