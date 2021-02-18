@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+
 import { Payment } from './Models/payment.model';
+import * as paymentAction from './payment-form/state/payment.actions';
+
 
 @Component({
   selector: 'app-root',
@@ -15,7 +18,7 @@ export class AppComponent implements OnInit{
   constructor(private store: Store<any>){ }
 
   ngOnInit(){
-    this.store.dispatch({type:"LOAD_PAYMENTS"})
+    this.store.dispatch(new paymentAction.LoadPayments())
     this.store.subscribe(state=>(this.payments = state.payment.paymentDetails))
   }
 }
