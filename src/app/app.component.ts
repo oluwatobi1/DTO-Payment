@@ -27,11 +27,15 @@ export class AppComponent implements OnInit{
 
   paymentsList$: Observable<Payment[]>;
   paymentsList;
-  constructor(private store: Store<fromPayment.AppState>){ }
+  constructor(
+    private store: Store<fromPayment.AppState>,
+    ){
+      this.store.dispatch(new paymentAction.LoadPayments())
+      this.paymentsList$ = this.store.pipe(select(fromPayment.getPayments))
+     }
 
   ngOnInit(){
-    this.store.dispatch(new paymentAction.LoadPayments())
-    this.paymentsList$ = this.store.pipe(select(fromPayment.getPayments))
+
 
 
   }

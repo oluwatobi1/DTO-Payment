@@ -14,6 +14,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { PaymentEffect } from './payment-form/state/payment.effects';
 import { HttpClientModule } from '@angular/common/http';
 
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ToastrModule } from "ngx-toastr";
+
 
 @NgModule({
   declarations: [
@@ -26,6 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     EffectsModule.forRoot([PaymentEffect]),
     StoreDevtoolsModule.instrument(),
     StoreModule.forRoot({

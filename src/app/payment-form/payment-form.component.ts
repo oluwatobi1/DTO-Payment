@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { ToastrService } from 'ngx-toastr';
 import { Payment } from '../Models/payment.model';
 
 
@@ -21,16 +22,20 @@ export class PaymentFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private store: Store<fromPayment.AppState>
+    private store: Store<fromPayment.AppState>,
+    private toastr: ToastrService,
   ) { }
 
   ngOnInit(): void {
+
+    this.toastr.info(" Successfully added");
     this.paymentForm = this.fb.group({
       cardNumber: new FormControl('', [Validators.minLength(16), Validators.maxLength(16)]),
       cardHolder: new FormControl('', [Validators.maxLength(45)]),
       expirationDate: new FormControl('', []),
       CCV: new FormControl(''),
       amount: new FormControl('')
+
 
     })
   }
@@ -44,7 +49,7 @@ export class PaymentFormComponent implements OnInit {
       amount: this.paymentForm.get("amount").value
     }
     this.store.dispatch(new paymentAction.CreatePayment(newPayment))
-
+    this.toastr.info("Successfuls");
     this.paymentForm.reset()
     console.log(newPayment);
 
