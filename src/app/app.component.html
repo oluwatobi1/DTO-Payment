@@ -29,6 +29,22 @@
   <!-- {{test |json }} this json -->
 
 
-  <div *ngFor="let payment of pay">
-    {{ payment.cardHolder }}
-  </div>
+  <div >
+
+  <table class="uk-table uk-table-hover uk-table-divider">
+    <thead>
+        <tr>
+            <th>Card Holder</th>
+            <th>Card Number</th>
+            <th>Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let payment of paymentsList">
+            <td>{{payment.cardHolder}}</td>
+            <td>{{payment.cardNumber}}</td>
+            <td>{{payment.amount}}</td>
+        </tr>
+    </tbody>
+</table>
+</div>

@@ -24,16 +24,15 @@ export class AppComponent implements OnInit{
   //     "id":"1"
   //   }
 
-  payments$: Observable<Payment[]> = this.store.select(state=>state.payment);
-  pay;
+  paymentsList;
 
   constructor(private store: Store<any>){ }
-  ngOnInit(){
-    this.store.dispatch({ type: "[Payment] Load Payment" })
-    this.store.subscribe(state => {(this.pay = state.payment.payments);
-      console.log("state pas", state.payment.payments);});
-    console.log("pay:", this.pay);
 
+  ngOnInit(){
+    this.store.dispatch(new paymentAction.LoadPayments())
+    this.store.subscribe(state => {(this.paymentsList = state.payment.payments);
+      console.log("state pas", state.payment.payments);});
+    console.log("pay:", this.paymentsList);
 
   }
 }

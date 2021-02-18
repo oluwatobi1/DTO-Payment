@@ -2,6 +2,7 @@ import * as paymentAction from "./payment.actions";
 import { Payment } from "../../Models/payment.model";
 
 import * as fromRoot from "../state/app-state"
+import { createFeatureSelector, createSelector } from "@ngrx/store";
 
 export interface PaymentState {
   payment:Payment[],
@@ -50,3 +51,20 @@ export function paymentReducer(state=initialState, action:paymentAction.Actions)
     }
   }
 }
+
+const getPaymentFeatureState = createFeatureSelector<PaymentState>(
+  "payment"
+)
+
+export const getPayments= createSelector(
+  getPaymentFeatureState,(state: PaymentState)=>state.payment
+)
+export const getPaymentLoading= createSelector(
+  getPaymentFeatureState,(state: PaymentState)=>state.loading
+)
+export const getPaymentsLoaded= createSelector(
+  getPaymentFeatureState,(state: PaymentState)=>state.loaded
+)
+export const getError= createSelector(
+  getPaymentFeatureState,(state: PaymentState)=>state.error
+)
